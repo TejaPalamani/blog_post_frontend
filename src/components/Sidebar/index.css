@@ -1,0 +1,102 @@
+.sidebar {
+  background-color: rgb(39, 39, 39);
+  
+  height: 100vh;
+  
+  padding: 20px;
+  width: 45px;
+  /* Set an initial width */
+  overflow: hidden;
+  /* Hide overflow to prevent content from showing when collapsed */
+  transition: all 0.3s ease-in-out;
+  /* Add transition to the width property */
+
+  position:fixed;
+  top:0;
+  left: 0;
+  z-index: 1;
+
+}
+
+
+
+.sidebar:hover {
+  width: 200px;
+
+}
+
+
+
+.icontext {
+  margin-left: 10px;
+  display: none;
+  text-align: end;
+  font-size: 20px;
+  font-style: oblique;
+
+}
+
+.sidebar:hover .icontext {
+  /* Move icontext to the left when sidebar is hovered */
+  /* Change text color when sidebar is hovered */
+  display: inline;
+  position: absolute;
+  right: 5px;
+
+}
+
+
+.NavLink {
+  background-color: rgb(252, 252, 252);
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-bottom: 35px;
+  color: black;
+  position: relative;
+}
+
+
+.NavLink:hover {
+  box-shadow: 0px 0px 55px rgb(65, 243, 190);
+}
+
+
+.LogoutButton {
+  border-radius: 10px;
+  height: 40px;
+  border: 1px solid black;
+  position:absolute ;
+  bottom: 40px;
+  left: 12px;
+  width: 60px;
+  transition: width 0.3s ease-in-out;
+  cursor: pointer;
+  
+
+}
+
+.sidebar:hover .LogoutButton {
+  width: 200px;
+  font-size: 18px;
+}
+
+
+
+.NavLink.active {
+  border-bottom: 3px solid rgba(64, 212, 151, 0.753);
+
+  color: rgb(61, 232, 238);
+}
+
+.icon{
+  font-size: 25px;
+}
+
+@media screen and ((min-width:320px) and (max-width:972px)){
+  .sidebar{
+    display: none;
+  }
+}

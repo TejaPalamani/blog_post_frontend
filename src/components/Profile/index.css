@@ -1,0 +1,80 @@
+.Profileimage{
+    background-color: yellow;
+    width:120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+}
+
+.main-profile-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    text-align: center;
+    height: 250px;
+    background-color: transparent;
+    
+}
+
+.small_devices_profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.under_profile{
+    
+    
+    background-color:transparent;
+}
+
+.under_profile ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+}
+
+.under_profile ul li{
+    list-style-type: none;
+    width:200px;
+    height: 200px;
+    position: relative;
+    margin:5px;
+    flex-grow: 1;
+}
+
+
+
+.threee_loading_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:429px){
+    .small_devices_profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    
+}

@@ -1,0 +1,99 @@
+.mani-home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.home-main-feed {
+  width: 810px;
+  background-color: rgb(66, 66, 66);
+  height: auto;
+  overflow-y: auto;
+}
+
+.nextpages{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.nextpages button{
+  margin: 10px;
+  width: 120px;
+  border:1px solid black;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(97, 179, 250);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding:10px
+
+}
+
+.nextpages button i{
+  font-size: 18px;
+}
+
+.nextpages button:hover {
+  background-color: rgb(224, 245, 133);
+  color:black;
+}
+
+
+.internal {
+  max-width: 800px;
+
+  background-color: transparent;
+
+
+  color: aliceblue;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+}
+
+@media screen and (max-width:768px) {
+  .home-main-feed {
+    width: 100%;
+    margin-right: 10px;
+    margin-left: 10px;
+
+
+  }
+}
+
+@media screen and ((min-width:770px) and (max-width:800px)) {
+  .home-main-feed {
+    width: 760px;
+    margin-right: 10px;
+    margin-left: 10px;
+    
+
+  }
+
+}
+
+
+.home-main-feed::-webkit-scrollbar {
+  width: 1px;
+  height:10px;
+}
+
+.home-main-feed::-webkit-scrollbar-track {
+  background: black;
+}
+
+.home-main-feed::-webkit-scrollbar-thumb {
+  background: #292929;
+}

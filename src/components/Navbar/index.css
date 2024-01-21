@@ -1,0 +1,194 @@
+
+
+
+.conditinalSider{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width:200px;
+    background-color: rgb(39, 39, 39);
+    color: rgb(245, 247, 250);
+    display: none;
+    padding:20px;
+    transition: all 0.3s ease-in-out;
+    z-index: 5;
+    
+}
+
+
+
+
+.navtop{
+    position: relative;
+    top:0;
+    width:100%;
+    height: 70px;
+    
+   background-color:  rgb(39, 39, 39);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    
+}
+
+.cross{
+    outline: none;
+    background-color: transparent;
+    color: aliceblue;
+    border-style: none;
+}
+
+.inner{
+    width: 800px;
+    height: 35px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+
+.searchbar{
+    width:200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.threeIcons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+
+}
+.toggleIcon{
+    display: none;
+}
+
+
+.toggleIcon button{
+    width:40px;
+    height: 33px;
+    outline: none;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 20px;
+
+}
+.threeIcons button{
+    width:40px;
+    height: 33px;
+    outline: none;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 20px;
+
+}
+
+.inner i{
+    margin:0px 5px;
+    font-size: 20px;
+    color:aliceblue;
+    cursor:pointer;
+}
+
+
+.searchbar input{
+    width:100%;
+    border-width: 0px;
+    outline: none;
+}
+
+.searchbar i{
+    color: black;
+}
+
+
+.navLink{
+    text-decoration:none ;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: border 0.5s ease-in-out;
+    color: white
+    
+    
+}
+
+.navLink:hover {
+    cursor: pointer;
+    
+    box-shadow: 0px 0px 5px rgb(61, 232, 238);
+    
+}
+
+.specialLogout{
+    width:180px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid black;
+    height: 35px;
+   position: fixed;
+   bottom:20px;
+   left:21px
+   
+   
+    
+}
+
+
+@media screen and ((min-width:329px) and (max-width:972px)){
+    .toggleIcon{
+        display: block;
+    }
+    .inner{
+        width:100%
+    }
+    .conditinalSider{
+        display: block;
+        
+    }
+    
+    .t{
+        position:absolute;
+        right: 0;
+        top:0;
+    
+    }
+    
+  }
+
+
+@media screen and ((min-width:0px) and (max-width:328px)){
+    .searchbar{
+        display: none;
+    }
+    .toggleIcon{
+        display: block;
+    }
+    .conditinalSider{
+        display: block;
+        
+    }
+}
+
+
+
+
+
+

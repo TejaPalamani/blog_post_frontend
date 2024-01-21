@@ -1,0 +1,46 @@
+.icon-back{
+    background-color: rgb(250, 73, 73);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+
+.retry-saved{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.retry-saved img{
+    width:60%;
+    height:60%;
+    
+}
+
+.retry-saved button{
+    margin-top: 15px;
+    border-radius: 10px;
+    border:1px solid black;
+    outline: none;
+    height: 35px;
+    width: 120px;
+    background-color: rgb(75, 119, 241);
+    color:aliceblue;
+    transition: background-color 0.5s ease
+}
+
+.retry-saved button:hover{
+    background-color: aliceblue;
+    color: rgb(75, 119, 241);
+}

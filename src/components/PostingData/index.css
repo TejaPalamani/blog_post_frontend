@@ -1,0 +1,98 @@
+.post-and-inputButton button{
+    width:120px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border:1px solid black;
+    color: aliceblue;
+    background-color: transparent;
+}
+
+
+
+.fileButton i{
+    
+    font-size: 26px;
+}
+
+.post-and-inputButton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5px;
+    
+}
+
+
+
+.description-and-image{
+    
+    height: 400px;
+    margin-left: 5px;
+    padding: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: aliceblue;
+}
+
+.description-and-image input{
+    outline: none;
+    border: none;
+    width:90%;
+    height: auto;
+    padding: 10px;
+    background-color: transparent;
+    font-size: 18px;
+}
+
+.input-title{
+    width:80%;
+    height: 20px;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid black;
+    margin-left: 5px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+
+    color: aliceblue;
+}
+
+
+.image-card{
+    max-width:350px ;
+    max-height: 300px;
+    
+    display: flex;
+    flex-shrink: 10;
+    background-color: transparent;
+
+}
+
+
+
+@media screen and (max-width:323px){
+    .image-card{
+        width:100%
+        
+    }
+}
+
+.input-form{
+    max-width:800px;
+
+    background-color: transparent;
+    height:80%;
+    
+  color: aliceblue;
+}
+
+button{
+    cursor: pointer;
+}
