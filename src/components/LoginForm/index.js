@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
-import "./index.css";
+import './index.css';
+import { baseurl } from '../../constants';
 
 const Login = () => {
-  const [email, setemail] = useState("");
-  const [passCode, setpassCode] = useState("");
+  const [email, setemail] = useState('');
+  const [passCode, setpassCode] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const [state, setState] = useState({ error: false, mesg: "" });
+  const [state, setState] = useState({ error: false, mesg: '' });
 
   const navigate = useNavigate();
-  const jwt_token = Cookies.get("token");
+  const jwt_token = Cookies.get('token');
 
   useEffect(() => {
     if (jwt_token) {
-      navigate("/");
+      navigate('/');
     }
   }, [jwt_token]);
 
@@ -26,14 +27,14 @@ const Login = () => {
     };
 
     const option = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(userDetails),
     };
 
-    const url = "http://localhost:3000/blog-api/login";
+    const url = `${baseurl}/blog-api/login`;
 
     try {
       const response = await fetch(url, option);
@@ -41,9 +42,9 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         const jwt = data.jwt_token;
-        setState({ error: false, mesg: "" });
-        Cookies.set("token", jwt, { expires: 7 });
-        navigate("/");
+        setState({ error: false, mesg: '' });
+        Cookies.set('token', jwt, { expires: 7 });
+        navigate('/');
       } else {
         const data = await response.json();
         const error = data.error;
@@ -76,7 +77,7 @@ const Login = () => {
           Password
         </label>
         <input
-          type={showPass ? "text" : "password"}
+          type={showPass ? 'text' : 'password'}
           placeholder="Enter password"
           value={passCode}
           id="pass"
@@ -84,21 +85,21 @@ const Login = () => {
         />
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
         >
           <input
             type="checkbox"
             onChange={() => setShowPass(!showPass)}
-            style={{ width: "16px", cursor: "pointer" }}
+            style={{ width: '16px', cursor: 'pointer' }}
             id="check"
           />
           <label htmlFor="check">show password</label>
         </div>
         <button type="submit">Login</button>
-        {state.error && <p style={{ color: "red" }}>{state.mesg}</p>}
+        {state.error && <p style={{ color: 'red' }}>{state.mesg}</p>}
       </form>
     </div>
   );

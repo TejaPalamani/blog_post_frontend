@@ -1,32 +1,33 @@
-import { useParams } from "react-router-dom";
-import Navbar from "../Navbar";
-import Sidebar from "../Sidebar";
-import "./index.css";
-import Cookies from "js-cookie";
-import { useContext, useEffect, useState } from "react";
-import { GiSkeleton } from "react-icons/gi";
-import { MdOutlineDelete } from "react-icons/md";
-import Loaderfunction from "../skeleton";
-import { FcDislike, FcLike } from "react-icons/fc";
-import { FaRegComment } from "react-icons/fa";
-import { CiSaveDown2 } from "react-icons/ci";
-import { formatDistanceToNow, parseISO } from "date-fns";
-import ContextObject from "../../context/ContextObject";
+import { useParams } from 'react-router-dom';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
+import './index.css';
+import Cookies from 'js-cookie';
+import { useContext, useEffect, useState } from 'react';
+import { GiSkeleton } from 'react-icons/gi';
+import { MdOutlineDelete } from 'react-icons/md';
+import Loaderfunction from '../skeleton';
+import { FcDislike, FcLike } from 'react-icons/fc';
+import { FaRegComment } from 'react-icons/fa';
+import { CiSaveDown2 } from 'react-icons/ci';
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import ContextObject from '../../context/ContextObject';
+import { baseurl } from '../../constants';
 
 ///blog with comments and time list before that add likes and comments post
 
 const status = {
-  inital: "inital",
-  loading: "loading",
-  success: "success",
-  error: "error",
+  inital: 'inital',
+  loading: 'loading',
+  success: 'success',
+  error: 'error',
 };
 
 const Singleblog = () => {
   const { id } = useParams();
-  const jwt_token = Cookies.get("token");
+  const jwt_token = Cookies.get('token');
 
-  const decode = jwt_token.split(".")[1];
+  const decode = jwt_token.split('.')[1];
 
   //btoa means encode
   //atob means decode
@@ -39,7 +40,7 @@ const Singleblog = () => {
   const [likeStatus, setLikeStatus] = useState(null);
   const [comment, setComment] = useState({
     status: false,
-    comment: "",
+    comment: '',
   });
   const [isLoading, setLoading] = useState(true);
 
@@ -69,10 +70,10 @@ const Singleblog = () => {
 
     //fetching data from database
 
-    const postLikesUrl = `http://localhost:3000/user/like/${id}`;
+    const postLikesUrl = `${baseurl}/user/like/${id}`;
 
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${jwt_token}`,
       },
@@ -89,16 +90,16 @@ const Singleblog = () => {
   async function handleCommentsPost() {
     //database fetch doing here
     //after fetch only set state
-    if (comment.comment !== "") {
-      const commentUrl = `http://localhost:3000/user/comments/${id}`;
+    if (comment.comment !== '') {
+      const commentUrl = `${baseurl}/user/comments/${id}`;
 
       const userComment = { comment: comment.comment };
 
       const options = {
-        method: "POST",
+        method: 'POST',
         headers: {
           Authorization: `Bearer ${jwt_token}`,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(userComment),
       };
@@ -106,14 +107,14 @@ const Singleblog = () => {
       const response = await fetch(commentUrl, options);
 
       if (response.ok) {
-        setComment((prev) => ({ ...prev, comment: "" }));
+        setComment((prev) => ({ ...prev, comment: '' }));
         setCount((prev) => ({
           ...prev,
           commentsCount: prev.commentsCount + 1,
         }));
       }
     } else {
-      const userDynamically = window.prompt("Enter Comment:", "enter comment!");
+      const userDynamically = window.prompt('Enter Comment:', 'enter comment!');
       if (userDynamically !== null) {
         setComment((prev) => ({ ...prev, comment: userDynamically }));
       }
@@ -122,13 +123,13 @@ const Singleblog = () => {
 
   const getSingleData = async () => {
     setProgress(status.loading);
-    const singleBlogUrl = `http://localhost:3000/blog-api/blogs/${id}`;
+    const singleBlogUrl = `${baseurl}/blog-api/blogs/${id}`;
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${jwt_token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     };
 
@@ -203,13 +204,13 @@ const Singleblog = () => {
     const diff = formatDistanceToNow(new Date(createdAtUTC));
 
     async function handleDelteButtonFunction() {
-      const commentDeleteUrl = `http://localhost:3000/user/comments-remove/${commentId}`; //provide id of comment
+      const commentDeleteUrl = `${baseurl}/user/comments-remove/${commentId}`; //provide id of comment
 
       const options = {
-        method: "DELETE",
+        method: 'DELETE',
         headers: {
           Authorization: `Bearer ${jwt_token}`,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       };
 
@@ -228,9 +229,9 @@ const Singleblog = () => {
             type="button"
             title="delete"
             onClick={handleDelteButtonFunction}
-            style={{ outline: "none", backgroundColor: "none", border: "none" }}
+            style={{ outline: 'none', backgroundColor: 'none', border: 'none' }}
           >
-            <i style={{ fontSize: "22px" }}>
+            <i style={{ fontSize: '22px' }}>
               <MdOutlineDelete />
             </i>
           </button>
@@ -242,36 +243,36 @@ const Singleblog = () => {
       <li className="com_list">
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "20px",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '20px',
           }}
         >
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}
           >
             <span className="p">{CommentUserId.name[0]}</span>
-            <div style={{ marginLeft: "15px" }}>
-              <p style={{ color: "green" }}>{CommentUserId.name}</p>
+            <div style={{ marginLeft: '15px' }}>
+              <p style={{ color: 'green' }}>{CommentUserId.name}</p>
               <p>{diff} ago</p>
             </div>
           </div>
           {checkButton()}
         </div>
-        <p style={{ marginLeft: "46px" }}>{comment}</p>
+        <p style={{ marginLeft: '46px' }}>{comment}</p>
       </li>
     );
   };
 
   const imageorVideo = () => {
-    if (data.image.endsWith(".mp4")) {
+    if (data.image.endsWith('.mp4')) {
       return (
         <video controls autoPlay width="100%" height={500}>
           <source src={data.image} type="video/mp4" />
@@ -289,18 +290,18 @@ const Singleblog = () => {
       <>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            marginBottom: "10px",
-            marginTop: "10px",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            marginBottom: '10px',
+            marginTop: '10px',
           }}
         >
           <h1 className="profile">{data.userId.name[0]}</h1>
 
           <div className="profile_para">
-            <p style={{ color: "rgb(121, 247, 163)" }}>{data.userId.name}</p>
+            <p style={{ color: 'rgb(121, 247, 163)' }}>{data.userId.name}</p>
             <p className="tittle_para">{data.title}</p>
           </div>
         </div>
@@ -340,12 +341,12 @@ const Singleblog = () => {
               );
             }}
           >
-            <i style={{ color: saveStatus ? "rgb(28, 240, 56)" : null }}>
+            <i style={{ color: saveStatus ? 'rgb(28, 240, 56)' : null }}>
               <CiSaveDown2 />
             </i>
             <span
               className="min-device"
-              style={{ color: saveStatus ? "rgb(28, 240, 56)" : null }}
+              style={{ color: saveStatus ? 'rgb(28, 240, 56)' : null }}
             >
               save
             </span>
@@ -364,7 +365,7 @@ const Singleblog = () => {
                 }))
               }
               onKeyDown={(event) => {
-                event.key === "Enter" && handleCommentsPost();
+                event.key === 'Enter' && handleCommentsPost();
               }}
             />
             <button type="button" onClick={() => handleCommentsPost()}>

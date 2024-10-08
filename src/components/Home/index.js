@@ -1,25 +1,26 @@
-import Cookies from "js-cookie";
-import HomeBlog from "../homeBlog";
+import Cookies from 'js-cookie';
+import HomeBlog from '../homeBlog';
 
-import { useNavigate, Navigate } from "react-router-dom";
-import Sidebar from "../Sidebar";
-import Navbar from "../Navbar";
-import { TbPlayerTrackPrev } from "react-icons/tb";
-import { TbPlayerTrackNext } from "react-icons/tb";
+import { useNavigate, Navigate } from 'react-router-dom';
+import Sidebar from '../Sidebar';
+import Navbar from '../Navbar';
+import { TbPlayerTrackPrev } from 'react-icons/tb';
+import { TbPlayerTrackNext } from 'react-icons/tb';
 
-import "./index.css";
-import { useEffect, useState } from "react";
-import Loaderfunction from "../skeleton";
+import './index.css';
+import { useEffect, useState } from 'react';
+import Loaderfunction from '../skeleton';
+import { baseurl, notFoundImage } from '../../constants';
 
 const status = {
-  intial: "intial",
-  loading: "loading",
-  success: "success",
-  error: "error",
+  intial: 'intial',
+  loading: 'loading',
+  success: 'success',
+  error: 'error',
 };
 
 const Home = () => {
-  const jwt_token = Cookies.get("token");
+  const jwt_token = Cookies.get('token');
 
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
@@ -28,9 +29,9 @@ const Home = () => {
 
   const gettingData = async () => {
     setProgress(status.loading);
-    const url = `http://localhost:3000/blog-api/blogs/?skip=${page}`;
+    const url = `${baseurl}/blog-api/blogs/?skip=${page}`;
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${jwt_token}`,
       },
@@ -41,7 +42,7 @@ const Home = () => {
     if (response.ok) {
       const actual_data = await response.json();
       const { newDataWithLiked, total } = actual_data;
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
       setData(newDataWithLiked);
       setProgress(status.success);
     } else {
@@ -61,36 +62,36 @@ const Home = () => {
     return (
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "centre",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'centre',
+          alignItems: 'center',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         <img
-          src="https://res.cloudinary.com/ddl5dr4cw/image/upload/v1702573005/image-404_rcpshd.png"
+          src={notFoundImage}
           alt="404 not found"
           style={{
-            width: "auto",
-            height: "auto",
-            backgroundColor: "white",
+            width: 'auto',
+            height: 'auto',
+            backgroundColor: 'white',
           }}
         />
         <button
           type="button"
           style={{
-            backgroundColor: "black",
-            color: "white",
-            borderRadius: "10px",
-            width: "120px",
-            height: "35px",
-            cursor: "pointer",
-            position: "absolute",
-            bottom: "50%",
-            left: "50%",
-            transform: "translate(-50%, 50%)",
+            backgroundColor: 'black',
+            color: 'white',
+            borderRadius: '10px',
+            width: '120px',
+            height: '35px',
+            cursor: 'pointer',
+            position: 'absolute',
+            bottom: '50%',
+            left: '50%',
+            transform: 'translate(-50%, 50%)',
           }}
           onClick={() => gettingData()}
         >
@@ -121,7 +122,7 @@ const Home = () => {
           <button
             onClick={() => {
               page > 0 && setPage(page - 1);
-              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
           >
             <i>
@@ -133,7 +134,7 @@ const Home = () => {
             onClick={() => {
               data.length > 9 && setPage(page + 1);
               //window.scroll(0, 0);
-              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }}
           >
             <span>next</span>

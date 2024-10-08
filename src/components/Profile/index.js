@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import Navbar from "../Navbar";
-import Sidebar from "../Sidebar";
-import "./index.css";
-import Cookies from "js-cookie";
-import ListDisplay from "../ProfileSingleCard/index.";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { useEffect, useState } from 'react';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
+import './index.css';
+import Cookies from 'js-cookie';
+import ListDisplay from '../ProfileSingleCard/index.';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { baseurl } from '../../constants';
 
 const status1 = {
-  initial: "initial",
-  loading: "loading",
-  success: "success",
-  error: "error",
+  initial: 'initial',
+  loading: 'loading',
+  success: 'success',
+  error: 'error',
 };
 
 const ProfileCard = () => {
@@ -18,7 +19,7 @@ const ProfileCard = () => {
     likes: 0,
     commnets: 0,
     posts: 0,
-    userName: "",
+    userName: '',
   });
 
   const [status, setStatus] = useState(status1.initial);
@@ -27,12 +28,12 @@ const ProfileCard = () => {
 
   const getUserPosts = async () => {
     setStatus(status1.loading);
-    const url = "http://localhost:3000/blog-api/blogs/user-post"; // all user Posts
+    const url = `${baseurl}/blog-api/blogs/user-post`; // all user Posts
 
-    const jwt_token = Cookies.get("token");
+    const jwt_token = Cookies.get('token');
 
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
         authorization: `Bearer ${jwt_token}`,
       },
@@ -58,7 +59,7 @@ const ProfileCard = () => {
       await setData(data.userBlog);
       setStatus(status1.success);
     } else {
-      console.log("error occured");
+      console.log('error occured');
       setStatus(status1.error);
     }
   };
@@ -76,11 +77,11 @@ const ProfileCard = () => {
       <SkeletonTheme baseColor="white" highlightColor="black">
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: "60px",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '60px',
           }}
         >
           <Skeleton circle={true} count={1} width={150} height={150} />
@@ -92,46 +93,46 @@ const ProfileCard = () => {
         </div>
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            flexGrow: "1",
+            display: 'flex',
+            flexWrap: 'wrap',
+            flexGrow: '1',
           }}
         >
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
           <Skeleton
             width={200}
             height={200}
             count={1}
-            style={{ margin: "10px" }}
+            style={{ margin: '10px' }}
           />
         </div>
       </SkeletonTheme>
@@ -152,8 +153,8 @@ const ProfileCard = () => {
               </div>
               <h2
                 style={{
-                  color: "rgb(121, 247, 163)",
-                  textTransform: "capitalize",
+                  color: 'rgb(121, 247, 163)',
+                  textTransform: 'capitalize',
                 }}
               >
                 {total.name}
@@ -161,38 +162,38 @@ const ProfileCard = () => {
             </div>
             <div
               style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "300px",
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '300px',
               }}
             >
               <div>
-                <h2 style={{ color: "white" }}>Posts</h2>
+                <h2 style={{ color: 'white' }}>Posts</h2>
                 <h2
                   style={{
-                    color: "rgb(121, 247, 163)",
+                    color: 'rgb(121, 247, 163)',
                   }}
                 >
                   {total.posts}
                 </h2>
               </div>
               <div>
-                <h2 style={{ color: "white" }}>Likes</h2>
+                <h2 style={{ color: 'white' }}>Likes</h2>
                 <h2
                   style={{
-                    color: "rgb(121, 247, 163)",
+                    color: 'rgb(121, 247, 163)',
                   }}
                 >
                   {total.likes}
                 </h2>
               </div>
               <div>
-                <h2 style={{ color: "white" }}>comments</h2>
+                <h2 style={{ color: 'white' }}>comments</h2>
                 <h2
                   style={{
-                    color: "rgb(121, 247, 163)",
+                    color: 'rgb(121, 247, 163)',
                   }}
                 >
                   {total.commnets}
@@ -200,9 +201,9 @@ const ProfileCard = () => {
               </div>
             </div>
           </div>
-          <div style={{ marginLeft: "15px" }}>
-            <h2 style={{ color: "white" }}>Bio</h2>
-            <p style={{ color: "rgb(121, 247, 163)" }}>
+          <div style={{ marginLeft: '15px' }}>
+            <h2 style={{ color: 'white' }}>Bio</h2>
+            <p style={{ color: 'rgb(121, 247, 163)' }}>
               Bio field need to be updated according to user....
             </p>
           </div>

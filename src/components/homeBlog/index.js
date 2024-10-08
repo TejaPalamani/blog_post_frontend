@@ -1,25 +1,26 @@
-import { FcLike } from "react-icons/fc";
-import { FcDislike } from "react-icons/fc";
-import { FaRegComment } from "react-icons/fa";
-import { CiSaveDown2 } from "react-icons/ci";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import Cookies from "js-cookie";
-import { Link, useNavigate } from "react-router-dom";
-import "react-loading-skeleton/dist/skeleton.css";
-import "./index.css";
-import { useContext, useEffect, useState } from "react";
-import Loaderfunction from "../skeleton";
-import ContextObject from "../../context/ContextObject";
+import { FcLike } from 'react-icons/fc';
+import { FcDislike } from 'react-icons/fc';
+import { FaRegComment } from 'react-icons/fa';
+import { CiSaveDown2 } from 'react-icons/ci';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import Cookies from 'js-cookie';
+import { Link, useNavigate } from 'react-router-dom';
+import 'react-loading-skeleton/dist/skeleton.css';
+import './index.css';
+import { useContext, useEffect, useState } from 'react';
+import Loaderfunction from '../skeleton';
+import ContextObject from '../../context/ContextObject';
+import { baseurl } from '../../constants';
 
 const HomeBlog = (props) => {
   const { blog, status } = props;
   const { title, image, description, user_id, comments, likes, _id } = blog;
-  const jwt_token = Cookies.get("token");
+  const jwt_token = Cookies.get('token');
 
   const [tag, setTag] = useState(null);
 
   useEffect(() => {
-    if (image.endsWith(".mp4")) {
+    if (image.endsWith('.mp4')) {
       setTag(true);
     } else {
       setTag(false);
@@ -31,7 +32,7 @@ const HomeBlog = (props) => {
   const [likeStatus, setLikeStatus] = useState(status);
   const [comment, setComment] = useState({
     status: false,
-    comment: "",
+    comment: '',
   });
 
   const [isLoading, setLoading] = useState(true);
@@ -58,10 +59,10 @@ const HomeBlog = (props) => {
 
     //fetching data from database
 
-    const postLikesUrl = `http://localhost:3000/user/like/${_id}`;
+    const postLikesUrl = `${baseurl}/user/like/${_id}`;
 
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${jwt_token}`,
       },
@@ -78,16 +79,16 @@ const HomeBlog = (props) => {
   async function handleCommentsPost() {
     //database fetch doing here
     //after fetch only set state
-    if (comment.comment !== "") {
-      const commentUrl = `http://localhost:3000/user/comments/${_id}`;
+    if (comment.comment !== '') {
+      const commentUrl = `${baseurl}/user/comments/${_id}`;
 
       const userComment = { comment: comment.comment };
 
       const options = {
-        method: "POST",
+        method: 'POST',
         headers: {
           Authorization: `Bearer ${jwt_token}`,
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(userComment),
       };
@@ -95,14 +96,14 @@ const HomeBlog = (props) => {
       const response = await fetch(commentUrl, options);
 
       if (response.ok) {
-        setComment((prev) => ({ ...prev, comment: "" }));
+        setComment((prev) => ({ ...prev, comment: '' }));
         setCount((prev) => ({
           ...prev,
           commentsCount: prev.commentsCount + 1,
         }));
       }
     } else {
-      const userDynamically = window.prompt("Enter Comment:", "enter comment!");
+      const userDynamically = window.prompt('Enter Comment:', 'enter comment!');
       if (userDynamically !== null) {
         setComment((prev) => ({ ...prev, comment: userDynamically }));
       }
@@ -118,17 +119,17 @@ const HomeBlog = (props) => {
       <li className="li">
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            marginBottom: "10px",
-            marginTop: "10px",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start',
+            marginBottom: '10px',
+            marginTop: '10px',
           }}
         >
           <h1 className="profile">{user_id.name[0]}</h1>
           <div className="profile_para">
-            <p style={{ color: "rgb(121, 247, 163)" }}>{user_id.name}</p>
+            <p style={{ color: 'rgb(121, 247, 163)' }}>{user_id.name}</p>
             <p className="tittle_para">{title}</p>
           </div>
         </div>
@@ -142,7 +143,7 @@ const HomeBlog = (props) => {
             <img src={image} alt={title} className="image-card-image" />
           )}
         </Link>
-        <p style={{ color: "rgb(246, 247, 243)", margin: "10px" }}>
+        <p style={{ color: 'rgb(246, 247, 243)', margin: '10px' }}>
           {description}
         </p>
         <div className="like_comments_save">
@@ -178,13 +179,13 @@ const HomeBlog = (props) => {
               );
             }}
           >
-            <i style={{ color: saveStatus ? "rgb(28, 240, 56)" : null }}>
+            <i style={{ color: saveStatus ? 'rgb(28, 240, 56)' : null }}>
               <CiSaveDown2 />
             </i>
 
             <span
               className="min-device-none"
-              style={{ color: saveStatus ? "rgb(28, 240, 56)" : null }}
+              style={{ color: saveStatus ? 'rgb(28, 240, 56)' : null }}
             >
               save
             </span>
@@ -203,7 +204,7 @@ const HomeBlog = (props) => {
                 }))
               }
               onKeyDown={(event) => {
-                if (event.key === "Enter") {
+                if (event.key === 'Enter') {
                   handleCommentsPost();
                 }
               }}
@@ -219,7 +220,7 @@ const HomeBlog = (props) => {
 
   const sctualRender = () => {
     return (
-      <li style={{ border: "5px solid black" }}>
+      <li style={{ border: '5px solid black' }}>
         <div className="imageC">image</div>
         <h3>name</h3>
         <div>

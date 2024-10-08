@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-import "./index.css";
+import './index.css';
+import { baseurl } from '../../constants';
 
 const Register = () => {
-  const [uname, setUname] = useState("");
-  const [pname, setpname] = useState("");
-  const [email, setemail] = useState("");
-  const [error, seterror] = useState("");
+  const [uname, setUname] = useState('');
+  const [pname, setpname] = useState('');
+  const [email, setemail] = useState('');
+  const [error, seterror] = useState('');
 
   const navigate = useNavigate();
 
@@ -23,20 +24,20 @@ const Register = () => {
       };
 
       const option = {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
 
         body: JSON.stringify(userDetails),
       };
-      const url = "http://localhost:3000/blog-api/register";
+      const url = `${baseurl}/blog-api/register`;
 
       const response = await fetch(url, option);
 
       if (response.ok) {
         console.log(response.json());
-        navigate("/login");
+        navigate('/login');
       } else {
       }
     } catch (e) {
@@ -80,7 +81,7 @@ const Register = () => {
         />
         <div>
           <button type="submit">Register</button>
-          <button type="button" onClick={() => navigate("/login")}>
+          <button type="button" onClick={() => navigate('/login')}>
             Sign In
           </button>
         </div>

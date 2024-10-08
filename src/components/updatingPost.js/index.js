@@ -1,11 +1,12 @@
-import { Form, useLocation, useNavigate, useParams } from "react-router-dom";
-import Navbar from "../Navbar";
-import Sidebar from "../Sidebar";
-import { MdFileUpload } from "react-icons/md";
-import imageCompression from "browser-image-compression";
-import "./index.css";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { Form, useLocation, useNavigate, useParams } from 'react-router-dom';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
+import { MdFileUpload } from 'react-icons/md';
+import imageCompression from 'browser-image-compression';
+import './index.css';
+import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
+import { baseurl, imageSubmission, videoSubmission } from '../../constants';
 
 //          <button
 //           type="button"
@@ -41,7 +42,7 @@ const UpdatingBlogData = () => {
   const [video, setVideo] = useState(null);
 
   useEffect(() => {
-    if (state.blogData.image.endsWith(".mp4")) {
+    if (state.blogData.image.endsWith('.mp4')) {
       setVideo(state.blogData.image);
     } else {
       setImaage(state.blogData.image);
@@ -52,20 +53,20 @@ const UpdatingBlogData = () => {
 
   const fetchData = async (img) => {
     if (!img) {
-      alert("image and description is needed!");
+      alert('image and description is needed!');
       return;
     }
 
     //uploadind image to cludinary and getting url
-    const url = img.type.startsWith("video/")
-      ? "https://api.cloudinary.com/v1_1/ddl5dr4cw/video/upload?upload_preset=amjgvepq"
-      : "https://api.cloudinary.com/v1_1/ddl5dr4cw/image/upload?upload_preset=amjgvepq";
+    const url = img.type.startsWith('video/')
+      ? videoSubmission
+      : imageSubmission;
 
     const formData = new FormData();
-    formData.append("file", img);
+    formData.append('file', img);
 
     const options = {
-      method: "POST",
+      method: 'POST',
       body: formData,
     };
 
@@ -75,13 +76,13 @@ const UpdatingBlogData = () => {
       const data = await response.json();
       setState((prev) => ({ ...prev, image: data.secure_url }));
     } else {
-      console.log("no");
+      console.log('no');
     }
   };
 
   const handelInputfiles = () => {
-    document.querySelector(".file-i").click();
-    setState((prev) => ({ ...prev, image: "" }));
+    document.querySelector('.file-i').click();
+    setState((prev) => ({ ...prev, image: '' }));
   };
 
   // need to update only user poosted data nee to be modified
@@ -89,9 +90,9 @@ const UpdatingBlogData = () => {
     event.preventDefault();
     console.log(state1.image);
 
-    const token = Cookies.get("token");
+    const token = Cookies.get('token');
 
-    const url = `http://localhost:3000/blog-api/blogs/user-post/${id}`;
+    const url = `${baseurl}/blog-api/blogs/user-post/${id}`;
     //http://localhost:3000/blog-api/blogs/user-post/656226278fa343de362fd513
 
     const bodyObject = {
@@ -101,10 +102,10 @@ const UpdatingBlogData = () => {
     };
 
     const options = {
-      method: "PUT",
+      method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyObject),
     };
@@ -115,7 +116,7 @@ const UpdatingBlogData = () => {
       const data = await response.json();
       alert(data.mesg);
       setTimeout(() => {
-        navigate("/profile");
+        navigate('/profile');
       }, 2000);
     } else {
       const data = await response.json();
@@ -130,13 +131,13 @@ const UpdatingBlogData = () => {
     const img = event.target.files[0];
 
     reader.onload = (anotherEvent) => {
-      if (img.type.startsWith("image")) {
-        console.log("image");
+      if (img.type.startsWith('image')) {
+        console.log('image');
         //console.log(anotherEvent.target.result);
         setImaage(reader.result);
         setVideo(null);
-      } else if (img.type.startsWith("video/")) {
-        console.log("video");
+      } else if (img.type.startsWith('video/')) {
+        console.log('video');
         //console.log(anotherEvent.target.result);
         setImaage(null);
         //URl.createObjectUrl(file) // creates url blob binary formate
@@ -165,11 +166,11 @@ const UpdatingBlogData = () => {
               }
               className="input-title"
               value={state1.title}
-              style={{ fontSize: "18px" }}
+              style={{ fontSize: '18px' }}
             />
             <div className="description-and-image">
               <input
-                style={{ color: "aliceblue" }}
+                style={{ color: 'aliceblue' }}
                 type="text"
                 value={state1.description}
                 placeholder="Description"
@@ -180,12 +181,12 @@ const UpdatingBlogData = () => {
               />
               <div
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  flexWrap: "wrap",
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
 
-                  width: "80%",
+                  width: '80%',
                 }}
               >
                 {image && (
@@ -197,8 +198,8 @@ const UpdatingBlogData = () => {
                   </video>
                 )}
 
-                {state1.image !== "" ? (
-                  <p style={{ color: "aliceblue" }}>{`url:${state1.image}`}</p>
+                {state1.image !== '' ? (
+                  <p style={{ color: 'aliceblue' }}>{`url:${state1.image}`}</p>
                 ) : (
                   <p> URL loading....</p>
                 )}
@@ -220,7 +221,7 @@ const UpdatingBlogData = () => {
                   hidden
                 />
               </button>
-              {state1.image !== "" ? (
+              {state1.image !== '' ? (
                 <button type="submit">Post</button>
               ) : (
                 <button

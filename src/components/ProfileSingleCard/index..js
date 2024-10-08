@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { RxCross1 } from "react-icons/rx";
-import Cookies from "js-cookie";
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import { RxCross1 } from 'react-icons/rx';
+import Cookies from 'js-cookie';
 
-import "./index.css";
+import './index.css';
+import { baseurl } from '../../constants';
 
 const ListDisplay = (props) => {
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -16,7 +17,7 @@ const ListDisplay = (props) => {
   const [tag, setTag] = useState(null);
 
   useEffect(() => {
-    if (image.endsWith(".mp4")) {
+    if (image.endsWith('.mp4')) {
       setTag(true);
     } else {
       setTag(false);
@@ -24,14 +25,14 @@ const ListDisplay = (props) => {
   });
 
   const removeFunctionTrigger = async () => {
-    const url = `http://localhost:3000/blog-api/blogs/user-post/${eachData._id}`;
+    const url = `${baseurl}/blog-api/blogs/user-post/${eachData._id}`;
 
     //console.log(url);
 
-    const jwt_token = Cookies.get("token");
+    const jwt_token = Cookies.get('token');
 
     const options = {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
         Authorization: `Bearer ${jwt_token}`,
       },
@@ -54,7 +55,7 @@ const ListDisplay = (props) => {
     return (
       <li>
         <div style={{ backgroundImage: `url(${image})` }} className="inner_li">
-          <p style={{ color: "rgb(121, 247, 163)", fontWeight: "bold" }}>
+          <p style={{ color: 'rgb(121, 247, 163)', fontWeight: 'bold' }}>
             {eachData.title}
           </p>
           {!buttonClicked ? (
@@ -69,7 +70,7 @@ const ListDisplay = (props) => {
             </button>
           ) : (
             <div className="hiddden">
-              <div style={{ marginTop: "20px" }} className="tt">
+              <div style={{ marginTop: '20px' }} className="tt">
                 <button
                   onClick={() =>
                     navigate(`/update/${eachData._id}`, {
@@ -127,7 +128,7 @@ const ListDisplay = (props) => {
             </button>
           ) : (
             <div className="hiddden">
-              <div style={{ marginTop: "20px" }} className="tt">
+              <div style={{ marginTop: '20px' }} className="tt">
                 <button
                   onClick={() =>
                     navigate(`/update/${eachData._id}`, {
