@@ -1,4 +1,4 @@
-export const baseurl = 'http://localhost:5000';
+export const baseurl = 'https://blog-post-backend-cp3r.onrender.com';
 
 export const videoSubmission =
   'https://api.cloudinary.com/v1_1/ddl5dr4cw/video/upload?upload_preset=amjgvepq';
