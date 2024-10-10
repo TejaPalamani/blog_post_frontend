@@ -80,7 +80,9 @@ const Register = () => {
           onChange={(event) => setpname(event.target.value)}
         />
         <div>
-          <button type="submit">Register</button>
+          <button type="submit" style={{ marginRight: '5px' }}>
+            Register
+          </button>
           <button type="button" onClick={() => navigate('/login')}>
             Sign In
           </button>

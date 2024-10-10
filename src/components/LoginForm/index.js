@@ -98,7 +98,16 @@ const Login = () => {
           />
           <label htmlFor="check">show password</label>
         </div>
-        <button type="submit">Login</button>
+        <div>
+          <button
+            type="button"
+            style={{ marginRight: '5px' }}
+            onClick={() => navigate('/login')}
+          >
+            Sign In
+          </button>
+          <button type="submit">Register</button>
+        </div>
         {state.error && <p style={{ color: 'red' }}>{state.mesg}</p>}
       </form>
     </div>
