@@ -99,14 +99,12 @@ const Login = () => {
           <label htmlFor="check">show password</label>
         </div>
         <div>
-          <button
-            type="button"
-            style={{ marginRight: '5px' }}
-            onClick={() => navigate('/login')}
-          >
-            Sign In
+          <button type="submit" style={{ marginRight: '5px' }}>
+            Login In
           </button>
-          <button type="submit">Register</button>
+          <button type="button" onClick={() => navigate('/register')}>
+            Register
+          </button>
         </div>
         {state.error && <p style={{ color: 'red' }}>{state.mesg}</p>}
       </form>
