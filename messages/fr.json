@@ -97,7 +97,7 @@
   "privacyPolicyAssurance6": "Pas maintenu plus longtemps que nécessaire à son but",
   "privacyPolicyAssurance7": "Non transféré à des juridictions qui n'adhèrent pas aux directives susmentionnées",
   "privacyPolicyAssurance8": "Est utilisé à des fins de marketing basées sur le principe soi-disant opt-in.",
-  "privacyPolicyDisclosure": "La seule fois où la plate-forme de jeu {client_name} peut divulguer des données personnelles est lorsqu'elle le fait par une décision provenant de la loi gouvernante et / ou lorsqu'elle est ordonnée de le faire par ordre de l'autorité gouvernante et / ou lorsqu'il est ordonné de le faire par ordre du commissaire de protection des données et / ou en cas d'utilisateur directement et / ou indirect dans un crime qui implique un {Client_name) et / ou indirect dans un crime qui implique un {Client_name) et / ou indirect dans un crime qui implique un {Client_name Client).",
+  "privacyPolicyDisclosure": "La seule fois où la plate-forme de jeu {client_name} peut divulguer des données personnelles est lorsqu'elle le fait par une décision provenant de la loi gouvernante et / ou lorsqu'elle est ordonnée de le faire par ordre de l'autorité gouvernante et / ou lorsqu'il est ordonné de le faire par ordre du commissaire de protection des données et / ou en cas d'utilisateur directement et / ou indirect dans un crime qui implique un {Client_name Client).",
   "privacyPolicyAccount": "En ouvrant un compte avec la plate-forme de jeu {client_name}, l'utilisateur consent que la plate-forme de jeu {client_name} utilise ses données personnelles aux fins suivantes:",
   "privacyPolicyAccount1": "Performance de ces T&C par nous, nos fournisseurs et tout tiers agissant en notre nom",
   "privacyPolicyAccount2": "Propre marketing interne et promotion des activités",
@@ -415,5 +415,6 @@
   "Already_have_an_account": "Vous avez déjà un compte?",
   "Dont_have_an_account": "Vous n'avez pas de compte?",
   "Crypto": "Crypto",
-  "privacyPolicyPage": "dfkladk>? Adfla <lefet>"
+  "privacyPolicyPage": "dfkladk>? Adfla <lefet>",
+  "check": "Bonjour le monde!"
 }
